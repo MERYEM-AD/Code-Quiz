@@ -1,3 +1,15 @@
 .Presentation{
+    text-align: center;
     
+}
+.Timer{
+
+text-align:end;
+color: red;
+
+}
+
+.Quiz{
+    text-align: center;
+    color: yellow;
 }
