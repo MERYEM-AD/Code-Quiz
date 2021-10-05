@@ -1,3 +1,4 @@
+body{background-color: lightblue;}
 .Presentation{
     text-align: center;
     
@@ -12,4 +13,21 @@ color: red;
 .Quiz{
     text-align: center;
     color: yellow;
+}
+
+
+ol{
+    color: purple;
+    margin: 200px;
+    background-color: white;
+
+}
+
+li{
+    color: royalblue;
+    text-align: start;
+    color: royalblue;
+    margin: 34px 108px 50px;
+
+
 }
