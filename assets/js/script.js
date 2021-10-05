@@ -60,7 +60,7 @@ const QuestionsTest =[ //Array of objects
         correctAnswer:4
 
     }];
-   const MaxQuestions =4;
+  // const MaxQuestions =4;
     let answers = [];
     let choice=[];
 
@@ -90,26 +90,32 @@ function Quiz(){
 
 //Set Up the Timer
 
-let timeLeft = 10;
+let timeLeft = 20;
 
 function setTime() {
     // Sets interval in variable
     let timerInterval = setInterval(function() {
-        timeLeft--;
-        Timer.textContent = timeLeft +" s"
-      if(timeLeft === 0) {
-        // Stops execution of action at set interval
-        clearInterval(timerInterval);
-        // Calls function to create and append image
-    //    sendMessage();
         
+        Timer.textContent = timeLeft +" s"
+      if(timeLeft < 0 || QuestionsTest.length==0) {
+        Timer.textContent=" ";
+        clearInterval(timerInterval);
+        sendMessage();
+
       }
+      else timeLeft--;
+        // Stops execution of action at set interval
+        
+        // Calls function to create and append image
+
+        
+      
   
     }, 1000);
   }
 
   function setScore(){
-    displayScore.textContent=score;
+    displayScore.textContent="Score :"+score+"/100";
 
   }
 
@@ -170,13 +176,15 @@ let h ;
         if(h == QuestionsTest[currentQuestion].correctAnswer){
           console.log("Correct answer");
           score+=25;
-         setScore();
+          setScore();
 
 
         }else{
 
           console.log("INCorrect answer");
-         // timeLeft-=5;
+          timeLeft-=5;
+          //setTime();
+
 
           
         }
@@ -186,13 +194,13 @@ let h ;
         let QuestionsTestUpdated =QuestionsTest.splice(currentQuestion,1);
         if(QuestionsTest.length>0){
        // QuestionsTest.splice(currentQuestion,1);
-        console.log(QuestionsTest);
+        //console.log(QuestionsTest);
        answers=[];
        choice=[];
         
        getNewQuestion();
       }
-       else console.log("lenght 0");
+       else return 0;
       })
       
  
