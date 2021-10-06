@@ -13,6 +13,8 @@ color: red;
 .Quiz{
     text-align: center;
     color: yellow;
+    display: flex;
+    flex-direction: column;
 }
 
 

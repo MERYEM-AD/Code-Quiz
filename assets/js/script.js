@@ -104,12 +104,6 @@ function setTime() {
 
       }
       else timeLeft--;
-        // Stops execution of action at set interval
-        
-        // Calls function to create and append image
-
-        
-      
   
     }, 1000);
   }
@@ -125,6 +119,8 @@ function setTime() {
 
     Test.textContent= "    G A M E  O V E R   ";
     Test.setAttribute("style","font-size:50px;color:purple;");
+
+    registerScore();
 
 
   }
@@ -148,12 +144,12 @@ function setTime() {
   }
 
   for(let x=0;x<answers.length;x++){
-     choice[x] = document.createElement("li");
-    choice[x].textContent=answers[x];
-    choice[x].setAttribute("data-number",x+1);
-    choice[x].setAttribute("class","ch");
-    choice[x].setAttribute("style","cursor:grab;");
-    question.appendChild(choice[x]);
+      choice[x] = document.createElement("li");
+      choice[x].textContent=answers[x];
+      choice[x].setAttribute("data-number",x+1);
+      choice[x].setAttribute("class","ch");
+      choice[x].setAttribute("style","cursor:grab;");
+      question.appendChild(choice[x]);
 
   }
   
@@ -183,7 +179,6 @@ let h ;
 
           console.log("INCorrect answer");
           timeLeft-=5;
-          //setTime();
 
 
           
@@ -214,4 +209,61 @@ let h ;
 
 
    } 
+
+
+
+
+   const registerBtn = document.createElement("BUTTON");
+   let registerInp = document.createElement("input");
+
+function registerScore(){
+  let newScore =document.createElement("div");
+  Test.appendChild(newScore);
+
+
+  registerBtn.setAttribute("id","registerbtn");
+  
+ // registerInp.textContent="";
+  registerBtn.textContent="Register";
+  newScore.appendChild(registerInp);
+  newScore.appendChild(registerBtn);
+
+
+
+}
+
+registerBtn.addEventListener("click", function(event) {
+  event.preventDefault();
+ ;
+
+  if (registerInp.value === "") {
+    console.log("highScore cannot be blank");return 0;
+  } else {
+    console.log ( "Registered successfully");
+
+let UserInfo = {
+  Name: registerInp.value.trim(),
+  FinalScore: score
+
+};
+
+
+   localStorage.setItem("highScore", JSON.stringify(UserInfo));
+
+  //  localStorage.setItem("highScore",registerInp.value);
+    RedirecttoHighScore();
+  }
+});
+
+
+
+
+function RedirecttoHighScore() {
+
+    window.location.href ="highScores.html";
+
+
+}
+
+
   
