@@ -1,9 +1,13 @@
+const HighScoreButton = document.querySelector("#HighScoresPage");
 const startButton = document.querySelector("#startButton");
-const Presentation= document.querySelector(".Presentation");
-let Test = document.querySelector(".Quiz");
-let Timer = document.querySelector(".Timer");
-let displayScore=document.querySelector(".Score");
-const QuestionsTest =[ //Array of objects
+const Home= document.querySelector(".Home");
+const Timer = document.querySelector(".Timer");
+const displayScore=document.querySelector(".Score");
+const QuizSection = document.querySelector(".Quiz");
+//const correctionMessage= document.querySelector(".correction");
+
+
+const QuestionsTest =[ //Array of Questions objects
     {
         question:"JavaScript is interpreted by _______ ",
         choices:{
@@ -60,67 +64,80 @@ const QuestionsTest =[ //Array of objects
         correctAnswer:4
 
     }];
-  // const MaxQuestions =4;
+
     let answers = [];
     let choice=[];
 
     let currentQuestion;
     let score=0;
-    //let UserAnswer;
-startButton.addEventListener("click",function(){
 
+    //Button redirect to the HighScores page
 
-    Presentation.style.display = "none";
-    Quiz();
+    HighScoreButton.addEventListener("click",function(){
+      
+      window.location.href ="highScores.html";
+    });
+
+    //Button hides the Home section and invok setTime,setScore,Quiz functions
+
+    startButton.addEventListener("click",function(){
+      
+      Home.style.display ="none";
+      setTime();
+      setScore();
+      Quiz();
 
 });
 
+    //Set Up the Timer
 
-//create element
-function Quiz(){
-   // Test.setAttribute();
-    setTime();
-    setScore();
-    const headLine = document.createElement("h2");
-    headLine.textContent="The Quiz is beging ! Good Luck";
-    Test.appendChild(headLine);
-    getNewQuestion();
+    let timeLeft = 20;
+
+    function setTime() {
+
+      // Sets interval in variable
+      let timerInterval = setInterval(function() {
+          
+          Timer.textContent = timeLeft +" s"
+        if(timeLeft < 0 || QuestionsTest.length==0) {
+          Timer.textContent=" ";
+          clearInterval(timerInterval);
+          sendMessage();
+
+        }
+        else timeLeft--;
+    
+      }, 1000);
+    }
+
+  //Set up the score
+
+    function setScore(){
+
+      displayScore.textContent="Score : "+score+"/100";
+
+  }
+
+//Quiz function start with message and invok new question
+    function Quiz(){
+
+      const headLine = document.createElement("h2");
+      headLine.textContent="The Quiz is beging ! Good Luck";
+      QuizSection.appendChild(headLine); 
+      getNewQuestion();
 
 }
 
-//Set Up the Timer
-
-let timeLeft = 20;
-
-function setTime() {
-    // Sets interval in variable
-    let timerInterval = setInterval(function() {
-        
-        Timer.textContent = timeLeft +" s"
-      if(timeLeft < 0 || QuestionsTest.length==0) {
-        Timer.textContent=" ";
-        clearInterval(timerInterval);
-        sendMessage();
-
-      }
-      else timeLeft--;
-  
-    }, 1000);
-  }
-
-  function setScore(){
-    displayScore.textContent="Score :"+score+"/100";
-
-  }
 
 
-  function sendMessage(){
-    Timer.textContent = "-- : --";
+//sendMessage() launch message in the end of the test and invok registerScore
+    function sendMessage(){
 
-    Test.textContent= "    G A M E  O V E R   ";
-    Test.setAttribute("style","font-size:50px;color:purple;");
+      Timer.textContent = "-- : --";
+      QuizSection.textContent= "    G A M E  O V E R   ";
+      QuizSection.setAttribute("style","font-size:50px;color:purple;");
 
-    registerScore();
+      registerScore();
 
 
   }
@@ -128,132 +145,129 @@ function setTime() {
   let nextQuestion=0;
   
   const question = document.createElement("ol");
-  
+  //question.setAttribute("style","background-color:black");
+//getNewQuestion() random  questions to the tester 
 
-  function getNewQuestion(){
+    function getNewQuestion(){
       
-   currentQuestion = Math.floor(Math.random() * QuestionsTest.length);
-   question.textContent=QuestionsTest[currentQuestion].question;
-   console.log(answers);
-  
+      currentQuestion = Math.floor(Math.random() * QuestionsTest.length);
+      question.textContent=QuestionsTest[currentQuestion].question;
 
-   for (const [key, value] of Object.entries(QuestionsTest[currentQuestion].choices)) {
-      
-        answers.push(`${key}: ${value}`);
+          for (const [key, value] of Object.entries(QuestionsTest[currentQuestion].choices)) {
+            
+              answers.push(`${key}: ${value}`);
 
-  }
-
-  for(let x=0;x<answers.length;x++){
-      choice[x] = document.createElement("li");
-      choice[x].textContent=answers[x];
-      choice[x].setAttribute("data-number",x+1);
-      choice[x].setAttribute("class","ch");
-      choice[x].setAttribute("style","cursor:grab;");
-      question.appendChild(choice[x]);
-
-  }
-  
-   Test.appendChild(question);
-
-   
-   UserAnswer();
-
-
-  }
-
-
-  function UserAnswer(){
-let h ;
-    choice.forEach(c =>{
-      c.addEventListener("click",function(){
-
-        h=c.getAttribute("data-number");
-        console.log((h+"==="+QuestionsTest[currentQuestion].correctAnswer));
-        if(h == QuestionsTest[currentQuestion].correctAnswer){
-          console.log("Correct answer");
-          score+=25;
-          setScore();
-
-
-        }else{
-
-          console.log("INCorrect answer");
-          timeLeft-=5;
-
-
-          
         }
-       //currentQuestion=0;
+
+        for(let x=0;x<answers.length;x++){
+            choice[x] = document.createElement("li");
+            choice[x].textContent=answers[x];
+            choice[x].setAttribute("data-number",x+1);
+            choice[x].setAttribute("class","ch");
+            choice[x].setAttribute("style","cursor:grab;");
+            question.appendChild(choice[x]);
+
+        }
+        
+    QuizSection.appendChild(question); //QuizSection
+
+    for(let x=0;x<choice.length;x++){
+
+    choice[x].addEventListener("click", (UserAnswer));
+
+    }
+
+
+
+    }
+
+
+
+
+   function UserAnswer(event) {
+    let element = event.target;
+        let correction = document.createElement("p");
+        correction.setAttribute("id", "correction");
+    if (element.matches("li")) {
+
+      let datanumber = element.getAttribute("data-number");
+              if(datanumber == QuestionsTest[currentQuestion].correctAnswer){
+          
+                      correction.textContent = "Correct!   ";
+                        score+=25;
+                        setScore();
+              }else{
+
+                    console.log("INCorrect answer");
+                    timeLeft-=5;
+                    correction.textContent = "Wrong! " ;
+
+                  }
+
+
+      question.appendChild(correction);
+
         question.textContent="";
         choice.textContent="";
         let QuestionsTestUpdated =QuestionsTest.splice(currentQuestion,1);
         if(QuestionsTest.length>0){
-       // QuestionsTest.splice(currentQuestion,1);
-        //console.log(QuestionsTest);
        answers=[];
        choice=[];
         
        getNewQuestion();
       }
        else return 0;
-      })
+    }
+
       
- 
-
-    
-    
-  } );
-
-
-
-
-
-   } 
-
-
-
-
-   const registerBtn = document.createElement("BUTTON");
-   let registerInp = document.createElement("input");
-
-function registerScore(){
-  let newScore =document.createElement("div");
-  Test.appendChild(newScore);
-
-
-  registerBtn.setAttribute("id","registerbtn");
-  
- // registerInp.textContent="";
-  registerBtn.textContent="Register";
-  newScore.appendChild(registerInp);
-  newScore.appendChild(registerBtn);
-
-
-
-}
-
-registerBtn.addEventListener("click", function(event) {
-  event.preventDefault();
- ;
-
-  if (registerInp.value === "") {
-    console.log("highScore cannot be blank");return 0;
-  } else {
-    console.log ( "Registered successfully");
-
-let UserInfo = {
-  Name: registerInp.value.trim(),
-  FinalScore: score
-
-};
-
-
-   localStorage.setItem("highScore", JSON.stringify(UserInfo));
-
-  //  localStorage.setItem("highScore",registerInp.value);
-    RedirecttoHighScore();
   }
-});
+
+
+/* Form for regitration */ 
+      const registerBtn = document.createElement("BUTTON");
+      let registerInp = document.createElement("input");
+
+      function registerScore(){
+              let newScore =document.createElement("div");
+              QuizSection.appendChild(newScore);
+               registerBtn.setAttribute("id","registerbtn");
+               registerBtn.textContent="Register";
+              newScore.appendChild(registerInp);
+              newScore.appendChild(registerBtn);
+
+
+
+      }
+
+      registerBtn.addEventListener("click", function(event) {
+        event.preventDefault();
+      
+
+        if (registerInp.value === "") {
+         
+           return 0;
+
+      } else {
+
+      let UserInfo = {
+        Name: registerInp.value.trim(),
+        FinalScore: score
+
+      };
+
+
+      let ScoresTabl = localStorage.getItem("ScoresTabl");
+                  if (ScoresTabl === null) {
+                    ScoresTabl = [];
+                  } else {
+                    ScoresTabl = JSON.parse(ScoresTabl);
+                  }
+                  ScoresTabl.push(UserInfo);
+                  let newScore = JSON.stringify(ScoresTabl);
+                  localStorage.setItem("ScoresTabl", newScore);
+          RedirecttoHighScore();
+        }
+      });
 
 
 

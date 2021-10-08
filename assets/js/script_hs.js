@@ -1,40 +1,37 @@
 
 const gobackbtn = document.querySelector("#goBack");
 const clearbtn = document.querySelector("#clear");
-let UserHighScore;
-let FinalHighScrores=[];
-let highScores = document.querySelector(".HighScores");
+let HighscoresList = document.querySelector("#HighscoresList");
 
  function renderLastRegistered(){
 
   
 
-     UserHighScore = JSON.parse(localStorage.getItem("highScore"));
-  if (UserHighScore !== null) {
-    FinalHighScrores.push(UserHighScore.Name + "-->" + UserHighScore.FinalScore);
-    console.log("length ="+FinalHighScrores.length);
-     console.log(FinalHighScrores[0]);
-     console.log(FinalHighScrores[1]);
-    // for(let i=0;i<FinalHighScrores;i++){
-
-      highScores.textContent=FinalHighScrores.join('');
-   // alert("FinalHighScrores["+i+"]="+FinalHighScrores[i]);
-
-
-    // }
-   // highScores.textContent = UserHighScore.Name + "-->" + UserHighScore.FinalScore;
-    //highScores.appendChild(registerInp);
+  let ScoresTabl = localStorage.getItem("ScoresTabl");
+  ScoresTabl = JSON.parse(ScoresTabl);
+  
+  if (ScoresTabl !== null) {
+  
+      for (var i = 0; i < ScoresTabl.length; i++) {
+  
+          var createLi = document.createElement("li");
+          createLi.textContent = ScoresTabl[i].Name + " YOUR SCORE IS :" + ScoresTabl[i].FinalScore;
+          HighscoresList.appendChild(createLi);
+  
+      }
   }
-  else return;
 
+  
 
 }
 renderLastRegistered();
 
 clearbtn.addEventListener("click",function(){
  // event.defaultPrevented();
-  localStorage.removeItem("highScore");
-  highScores.textContent=" ";
+//  localStorage.clear();
+//  location.reload();
+localStorage.removeItem("ScoresTabl");
+  HighscoresList.textContent=" ";
 
 });
 
