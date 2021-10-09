@@ -10,7 +10,7 @@ HighscoresList.setAttribute("style","border-radius:0;border: none;list-style: no
 
   let ScoresTabl = localStorage.getItem("ScoresTabl");
   ScoresTabl = JSON.parse(ScoresTabl);
-;
+
   
   if (ScoresTabl !== null) {
   
@@ -30,10 +30,8 @@ HighscoresList.setAttribute("style","border-radius:0;border: none;list-style: no
 renderLastRegistered();
 
 clearbtn.addEventListener("click",function(){
- // event.defaultPrevented();
-//  localStorage.clear();
-//  location.reload();
 localStorage.removeItem("ScoresTabl");
+
   HighscoresList.textContent=" ";
 
 });
