@@ -91,8 +91,8 @@ const QuestionsTest =[ //Array of Questions objects
 
     //Set Up the Timer
 
+    
     let timeLeft = 100;
-
     function setTime() {
 
       // Sets interval in variable
@@ -108,6 +108,8 @@ const QuestionsTest =[ //Array of Questions objects
         else timeLeft--;
     
       }, 1000);
+
+
     }
 
   //Set up the score
@@ -176,7 +178,7 @@ const QuestionsTest =[ //Array of Questions objects
   }
 
 
-
+// create div to display if the answer is correct or not
   let correction = document.createElement("div");
   correction.setAttribute("class", "correction");
   correction.setAttribute("style", "font-family:var(--ulfont);color:var(--ul-btn-col);font-size: 40px;");
@@ -192,19 +194,22 @@ const QuestionsTest =[ //Array of Questions objects
               if(datanumber == QuestionsTest[currentQuestion].correctAnswer){
                
                
-                      let snd = new Audio("../audioSounds/correct.mp3"); 
-                      snd.play();
+                    
                 
                       correction.textContent = "Correct!   ";
+                      let snd = new Audio("../audioSounds/correct.mp3"); 
+                      snd.play();
 
                         score+=25;
                         setScore();
               }else{
 
-                    timeLeft-=5;
+                   
+
+                    correction.textContent = "Wrong! " ;
                     let snd = new Audio("../audioSounds/incorrect.mp3"); 
                     snd.play();
-                    correction.textContent = "Wrong! " ;
+                    timeLeft-=5;
 
                   }
 
@@ -224,7 +229,6 @@ const QuestionsTest =[ //Array of Questions objects
         Timer.textContent = "";
         question.textContent="";
         choice.textContent="";
-        //correction.textContent="";
         correction.style.display="none"
         question.style.display="none";
 
@@ -255,6 +259,9 @@ const QuestionsTest =[ //Array of Questions objects
 
 
       }
+      
+
+          //Registrate Button
 
       registerBtn.addEventListener("click", function(event) {
         event.preventDefault();
@@ -279,15 +286,17 @@ const QuestionsTest =[ //Array of Questions objects
                   } else {
                     ScoresTabl = JSON.parse(ScoresTabl);
                   }
+                  //add new object to an array 
                   ScoresTabl.push(UserInfo);
                   let newScore = JSON.stringify(ScoresTabl);
+                  // set array of object to the locaStorage
                   localStorage.setItem("ScoresTabl", newScore);
           RedirecttoHighScore();
         }
       });
 
 
-
+    //Button redirect to the HighScores page
 
 function RedirecttoHighScore() {
 

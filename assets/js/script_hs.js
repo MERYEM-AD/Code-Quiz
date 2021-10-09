@@ -4,6 +4,8 @@ const clearbtn = document.querySelector("#clear");
 const HighscoresList = document.querySelector("#HighscoresList");
 HighscoresList.setAttribute("style","border-radius:0;border: none;list-style: none;");
 
+
+// display the array of objects fron the local storage to the HighscoresList ul
  function renderLastRegistered(){
 
   
@@ -29,12 +31,17 @@ HighscoresList.setAttribute("style","border-radius:0;border: none;list-style: no
 }
 renderLastRegistered();
 
+
+//clearbtn button remove ScoresTabl key registred in the local Storage 
+
 clearbtn.addEventListener("click",function(){
 localStorage.removeItem("ScoresTabl");
 
   HighscoresList.textContent=" ";
 
 });
+
+ //gobackbtn redirect to the index page
 
 gobackbtn.addEventListener("click",function(){
  
