@@ -3,7 +3,6 @@
     /*Colors*/
     --base:#F0FFFF;
     --background-col:blueviolet;
-    --header-col:linear-gradient(90deg, rgb(137, 134, 184) 0%, rgba(222,22,43,1) 67%, rgba(0,212,255,1) 100%);
     --backgroundDiv :linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(72,228,176,1) 0%, rgba(0,212,255,1) 100%);
     --ul-btn-col:magenta;
     --important:red;
