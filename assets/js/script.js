@@ -221,7 +221,7 @@ const QuestionsTest =[ //Array of Questions objects
   }
 
 
-/* Form for regitration */ 
+/* Form for registration */ 
       const registerBtn = document.createElement("BUTTON");
       let registerInp = document.createElement("input");
 

@@ -1,7 +1,8 @@
 
 const gobackbtn = document.querySelector("#goBack");
 const clearbtn = document.querySelector("#clear");
-let HighscoresList = document.querySelector("#HighscoresList");
+const HighscoresList = document.querySelector("#HighscoresList");
+HighscoresList.setAttribute("style","border-radius:0;border: none;list-style: none;");
 
  function renderLastRegistered(){
 
@@ -9,14 +10,16 @@ let HighscoresList = document.querySelector("#HighscoresList");
 
   let ScoresTabl = localStorage.getItem("ScoresTabl");
   ScoresTabl = JSON.parse(ScoresTabl);
+;
   
   if (ScoresTabl !== null) {
   
       for (var i = 0; i < ScoresTabl.length; i++) {
   
-          var createLi = document.createElement("li");
-          createLi.textContent = ScoresTabl[i].Name + " YOUR SCORE IS :" + ScoresTabl[i].FinalScore;
-          HighscoresList.appendChild(createLi);
+          const Li_element = document.createElement("li");
+          Li_element.setAttribute("style","padding: 50px;margin:0");
+          Li_element.textContent = ScoresTabl[i].Name + " YOUR SCORE IS : " + ScoresTabl[i].FinalScore;
+          HighscoresList.appendChild(Li_element);
   
       }
   }
