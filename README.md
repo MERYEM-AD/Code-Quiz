@@ -31,6 +31,23 @@ Creation of a repository in GitHub:
 * Mobile screen :
 ![mobile-index](/ScreenShoots/mobile-index.png)
 
+* The User selects an answer :
+![select-answer](/ScreenShoots/select-answer.png)
+
+* The User1 registers initial (name for example) :
+![Register1](/ScreenShoots/Register1.png)
+
+* The User3 registers initial (name for example) :
+![Register3](/ScreenShoots/Register3.png)
+
+* Display all registrated users:
+![Display-all](/ScreenShoots/Display-all.png)
+
+* Remove all registrated users:
+![clear-all](/ScreenShoots/clear-all.png)
+
+
+
 
 
 # Links :
