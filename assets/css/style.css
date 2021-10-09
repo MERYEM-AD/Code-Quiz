@@ -47,6 +47,11 @@ html {
     display: flex;
   }
 
+  .flex-wrap{
+
+    flex-wrap: wrap;
+  }
+
   .direction-column{
 
     flex-direction: column;
@@ -91,6 +96,7 @@ h1,.Timer{
   border: 4px solid var(--ul-btn-col);
   padding: 10px;
   width: 280px;
+  margin: 10px;
 
 }
 
