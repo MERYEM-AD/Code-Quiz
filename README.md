@@ -1,5 +1,6 @@
 # Code-Quiz
 
+
 Creation of a repository in GitHub:
 
   * Name of repository:Code Quiz
@@ -15,6 +16,8 @@ Creation of a repository in GitHub:
 
 * Commit with msg every modification in code.
 * Pushing to the repository in GitHub. 
+
+
 
 
 # Application's Screenshoot:
