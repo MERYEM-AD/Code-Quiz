@@ -6,30 +6,37 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>CODE QUIZ</title>
     <link rel="stylesheet" href="../assets/css/reset.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Gemunu+Libre:wght@800&family=Rubik+Beastly&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../assets/css/style.css" />
   </head>
   <body>
-
+<section class="container1 display-flex direction-column">
     <section class="Home">
       <header>
-        <h1>Coding quiz challenge </h1>
+        <h1>Coding QUIZ Challenge </h1>
+        <ul> RULES
+          <li>When You click the start button then a timer starts ;</li>
+            
+          <li>With every Wrong answer (5s) will subtract from the Timer ;</li>
+
+          <li>If the timer reaches <span>(00:00)</span> or you finish the test before the end of the time the quiz will stop. </li>
+        </ul>
       </header>
 
-          <p>Rules ...................</p>
+   
 
           <!-- Button of the index page : Start quiz / HighScores -->
-        <div class="btn display-flex column">
-          <button id="startButton" >Start Quiz</button>
-          <button id="HighScoresPage">HighScores</button>
+        <div class="btnDiv">
+          <button id="startButton" class="btn" >Start Quiz</button>
+          <button id="HighScoresPage" class="btn">HighScores</button>
 
         </div>
     </section>
+ </section>
 
-    
-
-        <h2 class="Timer"></h2>
-        <h2 class="Score"></h2>
-        <section class="Quiz">
+        <h2 class="Timer flex "></h2>
+        <h2 class="Score flex "></h2>
+        <section class="Quiz flex ">
 
 
 

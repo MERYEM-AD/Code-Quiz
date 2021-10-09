@@ -2,11 +2,19 @@
 :root { 
     /*Colors*/
     --base:#F0FFFF;
-    --backgound-col:#20b2aa;
-    --header-bg-col:#2f4f4f;
-    --header-name-col :#00FFFF;
+    --background-col:blueviolet;
+    --header-col:linear-gradient(90deg, rgb(137, 134, 184) 0%, rgba(222,22,43,1) 67%, rgba(0,212,255,1) 100%);
+    --backgroundDiv :linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(72,228,176,1) 0%, rgba(0,212,255,1) 100%);
+    --ul-btn-col:magenta;
+    --important:red;
+
+    /* --header-bg-col:#2f4f4f;
+    --header-name-col :#00FFFF; */
+    --header-font:'Gemunu Libre', sans-serif;
+    --ulfont: 'Rubik Beastly', cursive;
+    --text-font:'Bebas Neue', cursive;
     /*Borders*/
-    --border-left-sd:5px solid var(--header-bg-col);
+    --border-ul: 10px dashed purple;
 
 
   }
@@ -23,18 +31,68 @@ html {
     /* set body font size to 1.75rem, which is 1.75x more than the font-size of 10px, making it 17.5px  */
     font-size: 1.75rem;
     line-height: 1.5;
-    background-color: var(--backgound-col);
+    background-color:var(--background-col);
 
+    
   }
+
+  header{
+
+    margin: 90px;
+  }
+  
+ .display-flex{
+    display: flex;
+  }
+
+  .direction-column{
+
+    flex-direction: column;
+  }
+
 
 .Home{
     text-align: center;
     
 }
+h1{
+  color:var(--base);
+  font-size: 70px;
+  font-family:var(--header-font);
+}
+
+.btnDiv{
+
+  padding-bottom: 60px;
+}
+
+
+.btn{
+
+  font-family: var(--ulfont);
+  text-align: center;
+  font-size: 40px;
+  color:var(--ul-btn-col);
+  cursor: pointer;
+  background-color: var(--base); 
+  border: 4px solid var(--ul-btn-col);
+  padding: 10px;
+
+}
+
+.btn:hover {
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+  background-color: var(--ul-btn-col);
+  color: var(--base);
+}
+
+span{
+  color :var(--important);
+}
 .Timer{
 
 text-align:end;
-color: red;
+color:var(--important);
 
 }
 
@@ -42,22 +100,32 @@ color: red;
     text-align: center;
     color: yellow;
     display: flex;
-    flex-direction: column;
+  
 }
 
 
-ol{
-    color: purple;
-    margin: 200px;
-    background-color: white;
+ol,ul{
+
+
+  color: var(--ul-btn-col);
+  font-size: 40px;
+  font-family:var(--ulfont);
+  margin-top: 40px;
+  background: var(--backgroundDiv) no-repeat;
+  border-radius: 15px 50px 30px 5px;
+  border:var(--border-ul);
+  list-style: auto;
+
 
 }
 
 li{
-    color: royalblue;
+  font-family: var(--text-font);
+    color:var(--base);
     text-align: start;
-    color: royalblue;
-    margin: 34px 108px 50px;
+    margin-left: 60px;
+    margin-top: 40px;
+  
 
 
 }

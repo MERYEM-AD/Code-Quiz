@@ -198,8 +198,10 @@ const QuestionsTest =[ //Array of Questions objects
                         setScore();
               }else{
 
-                    console.log("INCorrect answer");
+                   // console.log("INCorrect");
                     timeLeft-=5;
+                    let snd = new Audio("../audioSounds/incorrect.mp3"); 
+                    snd.play();
                     correction.textContent = "Wrong! " ;
 
                   }
