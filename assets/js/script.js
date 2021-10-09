@@ -177,33 +177,40 @@ const QuestionsTest =[ //Array of Questions objects
 
 
 
+  let correction = document.createElement("div");
+  correction.setAttribute("class", "correction");
+  correction.setAttribute("style", "font-family:var(--ulfont);color:var(--ul-btn-col);font-size: 40px;");
+  QuizSection.appendChild(correction);
+
+
    function UserAnswer(event) {
     let element = event.target;
-        let correction = document.createElement("p");
-        correction.setAttribute("id", "correction");
+
     if (element.matches("li")) {
 
       let datanumber = element.getAttribute("data-number");
               if(datanumber == QuestionsTest[currentQuestion].correctAnswer){
-          
+               
+               
+                      let snd = new Audio("../audioSounds/correct.mp3"); 
+                      snd.play();
+                
                       correction.textContent = "Correct!   ";
+
                         score+=25;
                         setScore();
               }else{
 
-                   // console.log("INCorrect");
                     timeLeft-=5;
-                    // let snd = new Audio("../audioSounds/incorrect.mp3"); 
-                    // snd.play();
+                    let snd = new Audio("../audioSounds/incorrect.mp3"); 
+                    snd.play();
                     correction.textContent = "Wrong! " ;
 
                   }
 
 
-      question.appendChild(correction);
 
-        question.textContent="";
-        choice.textContent="";
+
         let QuestionsTestUpdated =QuestionsTest.splice(currentQuestion,1);
         if(QuestionsTest.length>0){
        answers=[];
@@ -212,8 +219,15 @@ const QuestionsTest =[ //Array of Questions objects
        getNewQuestion();
       }
       
-      else    {   question.setAttribute("style","border: none;");
-      Timer.textContent = "";
+      else    {   
+        
+        Timer.textContent = "";
+        question.textContent="";
+        choice.textContent="";
+        //correction.textContent="";
+        correction.style.display="none"
+        question.style.display="none";
+
     }
     }
 
