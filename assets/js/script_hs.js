@@ -20,7 +20,7 @@ HighscoresList.setAttribute("style","border-radius:0;border: none;list-style: no
   
           const Li_element = document.createElement("li");
           Li_element.setAttribute("style","padding: 50px;margin:0");
-          Li_element.textContent = ScoresTabl[i].Name + " YOUR SCORE IS : " + ScoresTabl[i].FinalScore;
+          Li_element.textContent = ScoresTabl[i].Name + " YOUR SCORE IS : " + ScoresTabl[i].FinalScore+"/200";
           HighscoresList.appendChild(Li_element);
   
       }

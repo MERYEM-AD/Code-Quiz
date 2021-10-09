@@ -17,7 +17,7 @@ const QuestionsTest =[ //Array of Questions objects
             D:"None of the above"
          },
 
-        correctAnswer:2
+        correctAnswer:1
     },
     {
         question:"When a user views a page containing a JavaScript program, which machine actually executes the script? ",
@@ -33,6 +33,54 @@ const QuestionsTest =[ //Array of Questions objects
         correctAnswer:1
 
     },
+
+    {
+      question:"An HTML document can contain _________ ",
+      choices:{
+          A:"Attributes",
+          B:"Tags",
+          C:"Raw text",
+          D:"All the answers are true"
+
+
+      },
+
+      correctAnswer:4
+
+  },
+
+    {
+      question:"A page designed in HTML is called _________ ",
+      choices:{
+          A:"Application",
+          B:"Cover page",
+          C:"Front-end",
+          D:"Web Page"
+
+
+      },
+
+      correctAnswer:4
+
+  },
+
+  {
+    question:"An HTML document is saved with the ______ extension.",
+    choices:{
+        A:".htl",
+        B:".html",
+        C:".hml",
+        D:".htnl"
+
+
+    },
+
+    correctAnswer:2
+
+  },
+
+
+
     {
         question:"Using _______ statement is how you test for a specific condition.",
         choices:{
@@ -43,6 +91,22 @@ const QuestionsTest =[ //Array of Questions objects
         },
 
         correctAnswer:2
+
+
+    },
+
+
+
+      {
+        question:" Suppose we want to arrange three DIVs so that DIV 3 is placed above DIV1. Now, which CSS property are we going to use to control the stack order?",
+        choices:{
+            A:"d-index",
+            B:"s-index",
+            C:"x-index",
+            D:"z-index"
+        },
+
+        correctAnswer:4
 
 
     },
@@ -116,7 +180,7 @@ const QuestionsTest =[ //Array of Questions objects
 
     function setScore(){
 
-      displayScore.textContent="Score : "+score+"/100";
+      displayScore.textContent="Score : "+score+"/200";
 
   }
 
