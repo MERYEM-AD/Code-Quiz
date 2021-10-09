@@ -85,13 +85,13 @@ const QuestionsTest =[ //Array of Questions objects
       Home.style.display ="none";
       setTime();
       setScore();
-      Quiz();
+      getNewQuestion();
 
 });
 
     //Set Up the Timer
 
-    let timeLeft = 20;
+    let timeLeft = 100;
 
     function setTime() {
 
@@ -100,7 +100,8 @@ const QuestionsTest =[ //Array of Questions objects
           
           Timer.textContent = timeLeft +" s"
         if(timeLeft < 0 || QuestionsTest.length==0) {
-          Timer.textContent=" ";
+          Timer.textContent="  G A M E   O V E R  ";
+          displayScore.setAttribute("style","text-align: center;");
           clearInterval(timerInterval);
           sendMessage();
 
@@ -118,24 +119,14 @@ const QuestionsTest =[ //Array of Questions objects
 
   }
 
-//Quiz function start with message and invok new question
-    function Quiz(){
-
-      const headLine = document.createElement("h2");
-      headLine.textContent="The Quiz is beging ! Good Luck";
-      QuizSection.appendChild(headLine); 
-      getNewQuestion();
-
-}
-
 
 
 //sendMessage() launch message in the end of the test and invok registerScore
     function sendMessage(){
 
-      Timer.textContent = "-- : --";
-      QuizSection.textContent= "    G A M E  O V E R   ";
-      QuizSection.setAttribute("style","font-size:50px;color:purple;");
+
+      // QuizSection.textContent= "    G A M E  O V E R   ";
+      // QuizSection.setAttribute("style","font-size:50px;color:purple;");
 
       registerScore();
 
@@ -145,10 +136,12 @@ const QuestionsTest =[ //Array of Questions objects
   let nextQuestion=0;
   
   const question = document.createElement("ol");
-  //question.setAttribute("style","background-color:black");
+  
+  question.setAttribute("style","width:100%;color:var(--dark-col);list-style: none;font-family:var(--questionfont);");
 //getNewQuestion() random  questions to the tester 
 
     function getNewQuestion(){
+
       
       currentQuestion = Math.floor(Math.random() * QuestionsTest.length);
       question.textContent=QuestionsTest[currentQuestion].question;
@@ -163,24 +156,26 @@ const QuestionsTest =[ //Array of Questions objects
             choice[x] = document.createElement("li");
             choice[x].textContent=answers[x];
             choice[x].setAttribute("data-number",x+1);
-            choice[x].setAttribute("class","ch");
-            choice[x].setAttribute("style","cursor:grab;");
+            choice[x].setAttribute("class","this");
+            choice[x].setAttribute("style","cursor:pointer;font-family:var(--questionfont);");
             question.appendChild(choice[x]);
 
         }
-        
+     
     QuizSection.appendChild(question); //QuizSection
 
     for(let x=0;x<choice.length;x++){
 
     choice[x].addEventListener("click", (UserAnswer));
 
-    }
+         }
 
+      
+   
 
+    
 
-    }
-
+  }
 
 
 
@@ -200,8 +195,8 @@ const QuestionsTest =[ //Array of Questions objects
 
                    // console.log("INCorrect");
                     timeLeft-=5;
-                    let snd = new Audio("../audioSounds/incorrect.mp3"); 
-                    snd.play();
+                    // let snd = new Audio("../audioSounds/incorrect.mp3"); 
+                    // snd.play();
                     correction.textContent = "Wrong! " ;
 
                   }
@@ -218,7 +213,10 @@ const QuestionsTest =[ //Array of Questions objects
         
        getNewQuestion();
       }
-       else return 0;
+      
+      else    {   question.setAttribute("style","border: none;");
+      Timer.textContent = "";
+    }
     }
 
       
