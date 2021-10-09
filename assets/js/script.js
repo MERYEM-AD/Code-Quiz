@@ -100,8 +100,7 @@ const QuestionsTest =[ //Array of Questions objects
           
           Timer.textContent = timeLeft +" s"
         if(timeLeft < 0 || QuestionsTest.length==0) {
-          Timer.textContent="  G A M E   O V E R  ";
-          displayScore.setAttribute("style","text-align: center;");
+
           clearInterval(timerInterval);
           sendMessage();
 
@@ -124,9 +123,8 @@ const QuestionsTest =[ //Array of Questions objects
 //sendMessage() launch message in the end of the test and invok registerScore
     function sendMessage(){
 
-
-      // QuizSection.textContent= "    G A M E  O V E R   ";
-      // QuizSection.setAttribute("style","font-size:50px;color:purple;");
+      Timer.textContent="  G A M E   O V E R  ";
+      displayScore.setAttribute("style","text-align: center;");
 
       registerScore();
 
@@ -228,10 +226,15 @@ const QuestionsTest =[ //Array of Questions objects
       let registerInp = document.createElement("input");
 
       function registerScore(){
-              let newScore =document.createElement("div");
+
+              const newScore =document.createElement("div");
+              newScore.setAttribute("class","display-flex justify-content")
               QuizSection.appendChild(newScore);
                registerBtn.setAttribute("id","registerbtn");
+               registerBtn.setAttribute("class","btn");
                registerBtn.textContent="Register";
+               registerInp.setAttribute("style","width: 33%; margin-right: 30px;border: 4px solid var(--ul-btn-col);color: var(--ul-btn-col);font-family:var(--text-font);font-size:30px;"
+           );
               newScore.appendChild(registerInp);
               newScore.appendChild(registerBtn);
 
