@@ -23,13 +23,13 @@ Creation of a repository in GitHub:
 # Application's Screenshoot:
 
 * Desktop screen :
-![Desktop-index](/ScreenShoots/Desktop-index.PNG)
+![Desktop-index](/ScreenShoots/Desktop-index.png)
 
 * Tablet screen :
-![Tablet-index](/ScreenShoots/Tablet-index.PNG)
+![Tablet-index](/ScreenShoots/Tablet-index.png)
 
 * Mobile screen :
-![mobile-index](/ScreenShoots/mobile-index.PNG)
+![mobile-index](/ScreenShoots/mobile-index.png)
 
 
 
